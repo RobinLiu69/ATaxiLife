@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2qxbmw3ib6qu"]
+
+[ext_resource type="Texture2D" uid="uid://ys7cg8u1p3uq" path="res://Hot Wheels City Map.jpg" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://dk1od7ru5dfrj" path="res://taxi.tscn" id="1_ig7tw"]
+
+[node name="World" type="Node2D"]
+
+[node name="HotWheelsCityMap" type="Sprite2D" parent="."]
+position = Vector2(268, 237.5)
+scale = Vector2(10, 10)
+texture = ExtResource("1_0xm2m")
+
+[node name="Taxi" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(596, 317)

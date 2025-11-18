@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk1od7ru5dfrj"]
+
+[ext_resource type="Script" uid="uid://fowwkm5m1t48" path="res://taxi.gd" id="1_ok8at"]
+[ext_resource type="Texture2D" uid="uid://bwi81jh0h10yq" path="res://taxi.png" id="2_fy1to"]
+
+[node name="Taxi" type="CharacterBody2D"]
+script = ExtResource("1_ok8at")
+
+[node name="car" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_fy1to")
