@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://b87i8ge12bc67"]
+
+[ext_resource type="Texture2D" uid="uid://dib6807rtvbme" path="res://UI/方向盤.png" id="1_b3bc3"]
+[ext_resource type="Script" uid="uid://dlbhvrjv51aok" path="res://texture_rect.gd" id="2_3b2b5"]
+[ext_resource type="Texture2D" uid="uid://137pncu8mi4w" path="res://UI/自動檔架.png" id="3_g6l6n"]
+[ext_resource type="Texture2D" uid="uid://c0k1bi7kfqdkn" path="res://UI/排檔軸.png" id="4_qui0h"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="direction_light" type="TextureRect" parent="."]
+offset_left = 31.0
+offset_top = 590.0
+offset_right = 71.0
+offset_bottom = 630.0
+script = ExtResource("2_3b2b5")
+
+[node name="steering_wheel" type="TextureRect" parent="."]
+offset_left = 29.0001
+offset_top = 633.0
+offset_right = 545.0
+offset_bottom = 1149.0
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("1_b3bc3")
+
+[node name="gear_shifter" type="TextureRect" parent="."]
+offset_left = 1481.0
+offset_top = 589.0
+offset_right = 1997.0
+offset_bottom = 1105.0
+texture = ExtResource("3_g6l6n")
+
+[node name="TextureRect" type="TextureRect" parent="gear_shifter"]
+layout_mode = 0
+offset_top = 13.0
+offset_right = 516.0
+offset_bottom = 529.0
+texture = ExtResource("4_qui0h")

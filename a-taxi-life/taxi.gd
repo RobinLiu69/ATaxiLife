@@ -24,19 +24,20 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# ---- 檔位切換 ----
-	if not shifting:
-		if Input.is_action_just_pressed("gear_up") and gear < gear_ratios.size() - 1:
-			gear += 1
-			shifting = true
-			shift_timer = shift_cooldown
-		elif Input.is_action_just_pressed("gear_down") and gear > 1:
-			gear -= 1
-			shifting = true
-			shift_timer = shift_cooldown
-	else:
-		shift_timer -= delta
-		if shift_timer <= 0:
-			shifting = false
+	gear = 1
+	#if not shifting:
+		#if Input.is_action_just_pressed("gear_up") and gear < gear_ratios.size() - 1:
+			#gear += 1
+			#shifting = true
+			#shift_timer = shift_cooldown
+		#elif Input.is_action_just_pressed("gear_down") and gear > 1:
+			#gear -= 1
+			#shifting = true
+			#shift_timer = shift_cooldown
+	#else:
+		#shift_timer -= delta
+		#if shift_timer <= 0:
+			#shifting = false
 
 	# ---- 轉向控制 ----
 	if Input.is_action_pressed("A"):
