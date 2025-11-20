@@ -17,11 +17,25 @@ var shifting: bool = false
 var shift_cooldown: float = 0.25
 var shift_timer: float = 0.0
 
+var mouse_start_x := 0.0
+var dragging := false
+
 var steer_angle: float = 0.0
+
+signal steering_changed(angle)
 
 func _ready() -> void:
 	gravity_scale = 0.0
-
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				dragging = true
+				mouse_start_x = event.position.x
+				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+			else:
+				dragging = false
+				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 func _physics_process(delta: float) -> void:
 	# ---- 檔位切換 ----
 	gear = 1
@@ -40,12 +54,13 @@ func _physics_process(delta: float) -> void:
 			#shifting = false
 
 	# ---- 轉向控制 ----
-	if Input.is_action_pressed("A"):
-		steer_angle = clamp(steer_angle - steer_speed * delta, -max_steer_angle, max_steer_angle)
-	elif Input.is_action_pressed("D"):
-		steer_angle = clamp(steer_angle + steer_speed * delta, -max_steer_angle, max_steer_angle)
+	if dragging:
+		var mouse_move_x = Input.get_last_mouse_velocity().x
+		var sensitivity := 0.001
+		steer_angle = clamp(steer_angle + mouse_move_x * sensitivity,-max_steer_angle,max_steer_angle)
 	else:
-		steer_angle = move_toward(steer_angle, 0.0, return_steer_speed * delta)
+		# ⭐ 逐漸回正：利用 move_toward
+		steer_angle = move_toward(steer_angle,0.0,return_steer_speed * delta)
 
 	# ---- 計算車頭方向 ----
 	var forward_dir = Vector2.RIGHT.rotated(rotation)
@@ -64,6 +79,7 @@ func _physics_process(delta: float) -> void:
 	# ---- 轉向影響 ----
 	if abs(local_velocity.x) > 0.1:
 		rotation += deg_to_rad(steer_angle) * local_velocity.x / max_speed * delta
+		emit_signal("steering_changed", steer_angle)	
 
 	# ---- 側向漂移阻尼 ----
 	var lateral_velocity = transform.basis_xform_inv(linear_velocity).y
