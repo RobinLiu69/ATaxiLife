@@ -79,7 +79,6 @@ func _physics_process(delta: float) -> void:
 	# ---- 轉向影響 ----
 	if abs(local_velocity.x) > 0.1:
 		rotation += deg_to_rad(steer_angle) * local_velocity.x / max_speed * delta
-		print(steer_angle)
 		emit_signal("steering_changed", steer_angle)	
 
 	# ---- 側向漂移阻尼 ----
