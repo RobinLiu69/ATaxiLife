@@ -2,10 +2,10 @@ extends RigidBody2D
 
 # ---- 車輛參數 ----
 @export var max_speed: float = 2000.0        # 像素/秒
-@export var engine_force: float = 3000.0     # 前進最大推力
-@export var brake_force: float = 4000.0      # 倒退 / 煞車
+@export var engine_force: float = 200.0     # 前進最大推力
+@export var brake_force: float = 200.0      # 倒退 / 煞車
 @export var max_steer_angle: float = 180.0    # 最大轉角（度）
-@export var steer_speed: float = 200.0       # 轉向速度（度/秒）
+@export var steer_speed: float = 400.0       # 轉向速度（度/秒）
 @export var return_steer_speed: float = 120.0       # 轉回速度（度/秒）
 @export var drift_factor: float = 0.95       # 側向漂移阻尼
 
@@ -56,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	# ---- 轉向控制 ----
 	if dragging:
 		var mouse_move_x = Input.get_last_mouse_velocity().x
-		var sensitivity := 0.001
+		var sensitivity := 0.00025
 		steer_angle = clamp(steer_angle + mouse_move_x * sensitivity,-max_steer_angle,max_steer_angle)
 	else:
 		# ⭐ 逐漸回正：利用 move_toward
@@ -79,6 +79,7 @@ func _physics_process(delta: float) -> void:
 	# ---- 轉向影響 ----
 	if abs(local_velocity.x) > 0.1:
 		rotation += deg_to_rad(steer_angle) * local_velocity.x / max_speed * delta
+		print(steer_angle)
 		emit_signal("steering_changed", steer_angle)	
 
 	# ---- 側向漂移阻尼 ----

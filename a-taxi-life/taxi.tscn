@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk1od7ru5dfrj"]
+[gd_scene load_steps=7 format=3 uid="uid://dk1od7ru5dfrj"]
 
 [ext_resource type="Script" uid="uid://fowwkm5m1t48" path="res://taxi.gd" id="1_ok8at"]
 [ext_resource type="Texture2D" uid="uid://bwi81jh0h10yq" path="res://taxi.png" id="2_fy1to"]
 [ext_resource type="PackedScene" uid="uid://b87i8ge12bc67" path="res://UI.tscn" id="3_fy1to"]
+[ext_resource type="Texture2D" uid="uid://bgtuuxrc6c7vd" path="res://taxi_front wheel.png" id="4_an1lq"]
+[ext_resource type="Script" uid="uid://bmi1wi3t3w6ps" path="res://taxi_front_wheel_l.gd" id="5_y6u8w"]
+[ext_resource type="Script" uid="uid://bdnmn1qa3rvh0" path="res://taxi_front_wheel_r.gd" id="6_u2h11"]
 
 [node name="Taxi" type="RigidBody2D"]
 script = ExtResource("1_ok8at")
@@ -16,3 +19,17 @@ texture = ExtResource("2_fy1to")
 [node name="Camera2D" type="Camera2D" parent="."]
 rotation = 1.5708
 ignore_rotation = false
+
+[node name="taxi_front wheel_L" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(62, -51)
+rotation = 1.5708
+texture = ExtResource("4_an1lq")
+script = ExtResource("5_y6u8w")
+
+[node name="taxi_front wheel_R" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(62, 51)
+rotation = 1.5708
+texture = ExtResource("4_an1lq")
+script = ExtResource("6_u2h11")

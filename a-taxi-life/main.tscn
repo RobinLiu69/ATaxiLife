@@ -6,6 +6,7 @@
 [node name="World" type="Node2D"]
 
 [node name="HotWheelsCityMap" type="Sprite2D" parent="."]
+z_index = -2
 position = Vector2(268, 237.5)
 scale = Vector2(10, 10)
 texture = ExtResource("1_0xm2m")
