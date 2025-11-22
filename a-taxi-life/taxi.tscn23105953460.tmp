@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://fowwkm5m1t48" path="res://taxi.gd" id="1_ok8at"]
 [ext_resource type="Texture2D" uid="uid://bwi81jh0h10yq" path="res://taxi.png" id="2_fy1to"]
 [ext_resource type="PackedScene" uid="uid://b87i8ge12bc67" path="res://UI.tscn" id="3_fy1to"]
-[ext_resource type="Texture2D" uid="uid://bgtuuxrc6c7vd" path="res://taxi_wheel.png" id="4_an1lq"]
+[ext_resource type="Texture2D" uid="uid://bgtuuxrc6c7vd" path="res://taxi_front wheel.png" id="4_an1lq"]
 [ext_resource type="Script" uid="uid://dyykpbrq70yi5" path="res://cam_control.gd" id="5_7h7ix"]
 
 [node name="Taxi" type="RigidBody2D"]
@@ -27,6 +27,7 @@ rotation = 1.5708
 texture = ExtResource("2_fy1to")
 
 [node name="CamControl" type="Node2D" parent="."]
+position = Vector2(200, 0)
 script = ExtResource("5_7h7ix")
 
 [node name="Camera2D" type="Camera2D" parent="CamControl"]

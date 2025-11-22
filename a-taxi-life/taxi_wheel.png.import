@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvncpn2rpmbqe"
-path="res://.godot/imported/wheel.png-38930538759529989e357ad5e7dc5614.ctex"
+uid="uid://bgtuuxrc6c7vd"
+path="res://.godot/imported/taxi_wheel.png-31c966cc4edb7302b7c751730b88990a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://wheel.png"
-dest_files=["res://.godot/imported/wheel.png-38930538759529989e357ad5e7dc5614.ctex"]
+source_file="res://taxi_wheel.png"
+dest_files=["res://.godot/imported/taxi_wheel.png-31c966cc4edb7302b7c751730b88990a.ctex"]
 
 [params]
 

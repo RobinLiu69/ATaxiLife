@@ -81,14 +81,15 @@ offset_right = 302.0
 offset_bottom = 261.0
 theme_override_font_sizes/normal_font_size = 28
 bbcode_enabled = true
-text = "0"
+text = "323"
 scroll_active = false
 autowrap_mode = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+visible_characters = 4
+visible_ratio = 1.33333
 
 [node name="UpdateTimer" type="Timer" parent="DashBoard/SpeedTextDisplay"]
-wait_time = 0.25
-autostart = true
+wait_time = 0.5
 
 [connection signal="timeout" from="DashBoard/SpeedTextDisplay/UpdateTimer" to="." method="_on_update_timer_timeout"]
