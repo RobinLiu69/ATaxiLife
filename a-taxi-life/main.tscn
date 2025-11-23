@@ -1,12 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://c2qxbmw3ib6qu"]
+[gd_scene load_steps=3 format=3 uid="uid://c2qxbmw3ib6qu"]
 
 [ext_resource type="PackedScene" uid="uid://dk1od7ru5dfrj" path="res://taxi.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://c87chrknsh4v3" path="res://map.tscn" id="2_0xm2m"]
 
 [node name="World" type="Node2D"]
 
-[node name="Map" type="Sprite2D" parent="."]
-position = Vector2(1362, 1360)
-scale = Vector2(14, 14)
+[node name="Map2" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(7174, -1616)
+rotation = 3.14159
+scale = Vector2(10, 10)
+
+[node name="Map" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(-48, -8186)
+scale = Vector2(10, 10)
 
 [node name="Taxi" parent="." instance=ExtResource("1_ig7tw")]
 position = Vector2(514, 408)

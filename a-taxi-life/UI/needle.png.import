@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ys7cg8u1p3uq"
-path="res://.godot/imported/Hot Wheels City Map.jpg-5aabe7108ad9cd3427cabaedf5c87a55.ctex"
+uid="uid://dyyij8lq8qfux"
+path="res://.godot/imported/needle.png-ac728d57ac55fbe516b9f204a2a75221.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Hot Wheels City Map.jpg"
-dest_files=["res://.godot/imported/Hot Wheels City Map.jpg-5aabe7108ad9cd3427cabaedf5c87a55.ctex"]
+source_file="res://UI/needle.png"
+dest_files=["res://.godot/imported/needle.png-ac728d57ac55fbe516b9f204a2a75221.ctex"]
 
 [params]
 

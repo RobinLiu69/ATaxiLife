@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dk1od7ru5dfrj"]
+[gd_scene load_steps=7 format=3 uid="uid://dk1od7ru5dfrj"]
 
 [ext_resource type="Script" uid="uid://fowwkm5m1t48" path="res://taxi.gd" id="1_ok8at"]
 [ext_resource type="Texture2D" uid="uid://bwi81jh0h10yq" path="res://taxi.png" id="2_fy1to"]
@@ -6,25 +6,38 @@
 [ext_resource type="Texture2D" uid="uid://bgtuuxrc6c7vd" path="res://taxi_wheel.png" id="4_an1lq"]
 [ext_resource type="Script" uid="uid://dyykpbrq70yi5" path="res://cam_control.gd" id="5_7h7ix"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7h7ix"]
+radius = 48.0
+height = 190.0
+
 [node name="Taxi" type="RigidBody2D"]
 script = ExtResource("1_ok8at")
+
+[node name="TestingTextLabel" type="RichTextLabel" parent="."]
+offset_left = -36.0
+offset_top = -100.0
+offset_right = 4.0
+offset_bottom = -60.0
 
 [node name="CanvasLayer" parent="." instance=ExtResource("3_fy1to")]
 
 [node name="LeftFrontWheel" type="Sprite2D" parent="."]
-position = Vector2(142, -51)
+position = Vector2(67, -50)
 rotation = 1.5708
 texture = ExtResource("4_an1lq")
 
 [node name="RightFrontWheel" type="Sprite2D" parent="."]
-position = Vector2(142, 51)
+position = Vector2(67, 50)
 rotation = 1.5708
 texture = ExtResource("4_an1lq")
 
 [node name="Body" type="Sprite2D" parent="."]
-position = Vector2(80, 0)
 rotation = 1.5708
 texture = ExtResource("2_fy1to")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_7h7ix")
 
 [node name="CamControl" type="Node2D" parent="."]
 script = ExtResource("5_7h7ix")

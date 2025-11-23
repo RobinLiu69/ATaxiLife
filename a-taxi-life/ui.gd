@@ -9,6 +9,8 @@ extends CanvasLayer
 @onready var steering_wheel: TextureRect = $SteeringWheel
 @onready var direction_light: TextureRect = $SteeringWheel/DirectionLight
 @onready var update_timer: Timer = $DashBoard/SpeedTextDisplay/UpdateTimer
+@onready var speedometer_needle: TextureRect = $DashBoard/SpeedometerNeedle
+@onready var tachometer_needle: TextureRect = $DashBoard/TachometerNeedle
 
 
 @export var direction_textures: Array[String] = [
@@ -18,7 +20,7 @@ extends CanvasLayer
 ]
 
 var current_speed: int = 0
-
+var current_gear: int = 0
 
 func _ready() -> void:
 	car.accelerate.connect(_on_car_accelerate)
@@ -26,7 +28,16 @@ func _ready() -> void:
 	car.shift_changed.connect(_on_car_shift)
 	car.steering_changed.connect(_on_car_steering)
 	car.speed_update.connect(_update_current_speed)
-	
+	car.rpm_update.connect(_update_tachometer_needle)
+
+
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("Left_turn"):
+		_change_direction_light(0)
+	elif Input.is_action_pressed("Right_turn"):
+		_change_direction_light(2)
+	else:
+		_change_direction_light(1)
 
 
 func _on_car_accelerate(step_on: bool) -> void:
@@ -42,28 +53,23 @@ func _on_car_shift(type: int) -> void:
 	else:
 		shifter.position.y = -60 + type * -35
 
-
 func _update_current_speed(speed: int) -> void:
 	current_speed = speed
+	speedometer_needle.rotation_degrees = -90 + (180 * current_speed / 200)
 
+func _gear_update(gear: int) -> void:
+	current_gear = gear
 
 func _on_car_steering(angle: float) -> void:
 	steering_wheel.rotation_degrees = angle * 10
-
-func _process(delta: float) -> void:
-	if Input.is_action_pressed("Left_turn"):
-		_change_direction_light(0)
-	elif Input.is_action_pressed("Right_turn"):
-		_change_direction_light(2)
-	else:
-		_change_direction_light(1)
-
 
 func _change_direction_light(idx: int) -> void:
 	if direction_textures.is_empty():
 		return
 	direction_light.texture = load(direction_textures[idx])
 
+func _update_tachometer_needle(rpm: int) -> void:
+	tachometer_needle.rotation_degrees = -180 + (180 * rpm / 7000)
 
 func _on_update_timer_timeout() -> void:
 	speed_text_display.text = str(current_speed)

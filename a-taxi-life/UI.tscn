@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b87i8ge12bc67"]
+[gd_scene load_steps=9 format=3 uid="uid://b87i8ge12bc67"]
 
 [ext_resource type="Texture2D" uid="uid://dib6807rtvbme" path="res://UI/方向盤.png" id="1_b3bc3"]
 [ext_resource type="Script" uid="uid://dg6nxls4j2p4w" path="res://ui.gd" id="1_c6dx3"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://db2tq5ngej0hq" path="res://UI/油門.png" id="5_0mc3e"]
 [ext_resource type="Texture2D" uid="uid://nqif8ui7f7kc" path="res://UI/煞車.png" id="6_2n5f6"]
 [ext_resource type="Texture2D" uid="uid://b6686s77r5ins" path="res://UI/儀錶板.png" id="7_2n5f6"]
+[ext_resource type="Texture2D" uid="uid://dyyij8lq8qfux" path="res://UI/needle.png" id="8_27c8x"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 script = ExtResource("1_c6dx3")
@@ -67,9 +68,9 @@ scale = Vector2(1.8, 1.8)
 texture = ExtResource("6_2n5f6")
 
 [node name="DashBoard" type="TextureRect" parent="."]
-offset_left = 662.0
+offset_left = 700.0
 offset_top = 785.0
-offset_right = 1178.0
+offset_right = 1216.0
 offset_bottom = 1301.0
 texture = ExtResource("7_2n5f6")
 
@@ -90,5 +91,32 @@ vertical_alignment = 1
 [node name="UpdateTimer" type="Timer" parent="DashBoard/SpeedTextDisplay"]
 wait_time = 0.25
 autostart = true
+
+[node name="SpeedometerNeedle" type="TextureRect" parent="DashBoard"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 155.0
+offset_right = 283.0
+offset_bottom = 210.0
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(23, 47)
+texture = ExtResource("8_27c8x")
+
+[node name="TachometerNeedle" type="TextureRect" parent="DashBoard"]
+offset_left = 131.0
+offset_top = 170.0
+offset_right = 176.0
+offset_bottom = 225.0
+pivot_offset = Vector2(23, 47)
+texture = ExtResource("8_27c8x")
+
+[node name="FuelGaugeNeedle" type="TextureRect" parent="DashBoard"]
+layout_mode = 0
+offset_left = 372.0
+offset_top = 161.0
+offset_right = 417.0
+offset_bottom = 216.0
+pivot_offset = Vector2(23, 47)
+texture = ExtResource("8_27c8x")
 
 [connection signal="timeout" from="DashBoard/SpeedTextDisplay/UpdateTimer" to="." method="_on_update_timer_timeout"]

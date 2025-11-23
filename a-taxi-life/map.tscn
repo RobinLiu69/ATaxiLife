@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://c87chrknsh4v3"]
+
+[ext_resource type="Texture2D" uid="uid://caj6ac2fhupsa" path="res://Road/wall_1.png" id="1_c7s6e"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Wall1" type="Sprite2D" parent="."]
+position = Vector2(906, 150)
+texture = ExtResource("1_c7s6e")
+
+[node name="Wall2" type="Sprite2D" parent="."]
+position = Vector2(905, 585)
+texture = ExtResource("1_c7s6e")
+
+[node name="Wall3" type="Sprite2D" parent="."]
+position = Vector2(528, 890)
+rotation = 1.58021
+texture = ExtResource("1_c7s6e")
+
+[node name="Wall4" type="Sprite2D" parent="."]
+position = Vector2(115, 882)
+rotation = 1.58662
+texture = ExtResource("1_c7s6e")
