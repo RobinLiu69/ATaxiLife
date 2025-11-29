@@ -103,6 +103,7 @@ pivot_offset = Vector2(23, 47)
 texture = ExtResource("8_27c8x")
 
 [node name="TachometerNeedle" type="TextureRect" parent="DashBoard"]
+layout_mode = 0
 offset_left = 131.0
 offset_top = 170.0
 offset_right = 176.0

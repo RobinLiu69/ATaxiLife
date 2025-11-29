@@ -23,10 +23,9 @@ var current_speed: int = 0
 var current_gear: int = 0
 
 func _ready() -> void:
-	car.accelerate.connect(_on_car_accelerate)
-	car.braking.connect(_on_car_braking)
-	car.shift_changed.connect(_on_car_shift)
 	car.steering_changed.connect(_on_car_steering)
+	#car.braking.connect(_on_car_braking)
+	car.gear_changed.connect(_on_car_shift)
 	car.speed_update.connect(_update_current_speed)
 	car.rpm_update.connect(_update_tachometer_needle)
 
@@ -61,7 +60,7 @@ func _gear_update(gear: int) -> void:
 	current_gear = gear
 
 func _on_car_steering(angle: float) -> void:
-	steering_wheel.rotation_degrees = angle * 10
+	steering_wheel.rotation_degrees = 360 * angle / 15
 
 func _change_direction_light(idx: int) -> void:
 	if direction_textures.is_empty():

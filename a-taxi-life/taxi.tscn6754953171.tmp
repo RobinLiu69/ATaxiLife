@@ -1,13 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://dk1od7ru5dfrj"]
+[gd_scene load_steps=8 format=3 uid="uid://dk1od7ru5dfrj"]
 
 [ext_resource type="Script" uid="uid://fowwkm5m1t48" path="res://taxi.gd" id="1_ok8at"]
 [ext_resource type="Texture2D" uid="uid://bwi81jh0h10yq" path="res://taxi.png" id="2_fy1to"]
 [ext_resource type="PackedScene" uid="uid://b87i8ge12bc67" path="res://UI.tscn" id="3_fy1to"]
-[ext_resource type="Script" uid="uid://dcgvmpnn6g5cd" path="res://GearShifter.gd" id="3_u2h11"]
 [ext_resource type="Texture2D" uid="uid://bgtuuxrc6c7vd" path="res://taxi_wheel.png" id="4_an1lq"]
-[ext_resource type="Script" uid="uid://bromehjwrdae1" path="res://SteeringWheel.gd" id="4_b6uq3"]
 [ext_resource type="Script" uid="uid://dyykpbrq70yi5" path="res://cam_control.gd" id="5_7h7ix"]
-[ext_resource type="Script" uid="uid://dthc2buppkn3x" path="res://Eengine.gd" id="6_y6u8w"]
+[ext_resource type="Script" uid="uid://dthc2buppkn3x" path="res://engine.gd" id="6_y6u8w"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7h7ix"]
 radius = 48.0
@@ -16,25 +14,13 @@ height = 190.0
 [node name="Taxi" type="RigidBody2D"]
 script = ExtResource("1_ok8at")
 
-[node name="CanvasLayer" parent="." instance=ExtResource("3_fy1to")]
-
-[node name="CarEngine" type="Node" parent="."]
-script = ExtResource("6_y6u8w")
-metadata/_custom_type_script = "uid://dthc2buppkn3x"
-
-[node name="GearShifter" type="Node" parent="."]
-script = ExtResource("3_u2h11")
-metadata/_custom_type_script = "uid://dcgvmpnn6g5cd"
-
-[node name="SteeringWheel" type="Node" parent="."]
-script = ExtResource("4_b6uq3")
-metadata/_custom_type_script = "uid://bromehjwrdae1"
-
 [node name="TestingTextLabel" type="RichTextLabel" parent="."]
 offset_left = -36.0
 offset_top = -100.0
 offset_right = 4.0
 offset_bottom = -60.0
+
+[node name="CanvasLayer" parent="." instance=ExtResource("3_fy1to")]
 
 [node name="LeftFrontWheel" type="Sprite2D" parent="."]
 position = Vector2(67, -50)
@@ -60,3 +46,6 @@ script = ExtResource("5_7h7ix")
 [node name="Camera2D" type="Camera2D" parent="CamControl"]
 rotation = 1.5708
 ignore_rotation = false
+
+[node name="Engine" type="Node" parent="."]
+script = ExtResource("6_y6u8w")
